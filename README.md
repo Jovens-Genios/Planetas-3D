@@ -51,6 +51,7 @@ Props, perguntas frequentes e CSP estão no [guia em PDF](https://github.com/nan
 | <img src="public/planetas/planeta-alfabetizacao/poster.webp" width="64" alt=""> | Alfabetização | `planeta-alfabetizacao` |
 | <img src="public/planetas/planeta-transito/poster.webp" width="64" alt=""> | Trânsito | `planeta-transito` |
 | <img src="public/planetas/planeta-esportes/poster.webp" width="64" alt=""> | Esportes | `planeta-esportes` |
+| <img src="public/planetas/planeta-profissoes/poster.webp" width="64" alt=""> | Profissões | `planeta-profissoes` |
 <!-- planetas:fim -->
 
 O id é sempre `planeta-<nome>`, sem acentos. No código, `await carregarPlanetas()` devolve a lista com `id` e `nome`.
