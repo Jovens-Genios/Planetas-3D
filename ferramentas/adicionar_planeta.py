@@ -4,7 +4,7 @@
   python3 ferramentas/adicionar_planeta.py            # sem pasta: só refaz a documentação
 
 O que faz:
-  1. copia planeta.glb e poster.webp para public/planetas/<id>/;
+  1. copia o poster.webp e grava o planeta.glb comprimido (ferramentas/comprimir_glb.mjs, abaixo de 1 MB) em public/planetas/<id>/;
   2. põe a entrada no catálogo public/planetas/catalogo.json (substitui se o id já existe, senão vai para o fim);
   3. refaz a lista de planetas no README.md e no ferramentas/LEIA-ME.txt (entre as marcas "planetas:inicio/fim");
   4. refaz o GUIA-ENGENHARIA.pdf (ferramentas/guia/montar_guia.py).
@@ -34,8 +34,8 @@ def entrar(saida: Path):
     assert re.fullmatch(r'planeta-[a-z0-9-]+', e['id']), f'id fora do padrão planeta-<nome>: {e["id"]}'
     destino = PUB / e['id']
     destino.mkdir(parents=True, exist_ok=True)
-    for f in ('planeta.glb', 'poster.webp'):
-        shutil.copy(saida / f, destino / f)
+    shutil.copy(saida / 'poster.webp', destino / 'poster.webp')
+    subprocess.run(['node', str(RAIZ / 'ferramentas' / 'comprimir_glb.mjs'), str(saida / 'planeta.glb'), str(destino / 'planeta.glb')], check=True)
     cat = json.loads(CATALOGO.read_text())
     ids = [p['id'] for p in cat['planetas']]
     if e['id'] in ids:

@@ -11,7 +11,8 @@ O que faz, nesta ordem:
      elementos que saem dela) e põe o centro dela na origem, com raio 1. Assim o planeta gira
      em volta do próprio centro, sem bambolear.
   3. Reduz os triângulos (Decimate, colapso de arestas, preserva UV) para o orçamento da web.
-  4. Reduz as texturas (4K → 2K) e exporta em WebP, com malha comprimida por meshopt.
+  4. Reduz as texturas (4K → 2K) e exporta em WebP, com malha comprimida por meshopt (~2,5 MB).
+     O adicionar_planeta.py comprime depois para menos de 1 MB (ferramentas/comprimir_glb.mjs).
   5. Renderiza o pôster (imagem de reserva e primeiro quadro) no mesmo enquadramento do site.
 Grava planeta.glb, poster.webp e info.json (com a entrada do catálogo pronta, em "catalogo") na pasta de
 saída. O id é sempre planeta-<tema> sem acentos (ex.: --id planeta-emocoes --nome "Emoções").

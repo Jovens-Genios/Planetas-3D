@@ -182,7 +182,7 @@ planetas.map((p) =&gt; &lt;Planeta key={p.id}
     <div><b>Política de segurança (CSP)</b><p>Libere esse endereço em <code>img-src</code> e <code>connect-src</code>, e inclua <code>'wasm-unsafe-eval'</code> em <code>script-src</code> (a malha usa WebAssembly).</p></div>
     <div><b>Muitos planetas na mesma tela</b><p>Cada planeta 3D usa um contexto WebGL, e os navegadores aceitam ~16. Em listas longas, mostre o pôster como imagem e use o 3D só no destaque.</p></div>
     <div><b>SSR</b><p>O servidor entrega o pôster em HTML comum, e o navegador troca pelo 3D. Não há layout shift: o tamanho é fixo pela prop.</p></div>
-    <div><b>Peso</b><p>~2,5 MB por planeta, baixados só quando ele aparece na tela. O pôster tem ~80 KB. Sem rede ou sem WebGL, fica o pôster.</p></div>
+    <div><b>Peso</b><p>Menos de 1 MB por planeta (~0,8 MB), baixado só quando ele aparece na tela, mais ~250 KB do decodificador da malha, uma vez só. O pôster tem ~80 KB. Sem rede ou sem WebGL, fica o pôster.</p></div>
     <div><b>Versões testadas</b><p>Next.js 15.5, React 19.1 e three 0.170 (a única dependência). Também funciona com Next 13+ e React 18+.</p></div>
   </div>
   <span class="num">5</span>

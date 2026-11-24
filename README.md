@@ -1,6 +1,6 @@
 # Planetas 3D · Exploradores
 
-Os planetas de massinha dos Exploradores (Jovens Gênios) em 3D, girando no eixo vertical: uma volta a cada 40 s, com giro pela mão, pelo teclado e pelo toque.
+Os planetas de massinha dos Exploradores (Jovens Gênios) em 3D, girando no eixo vertical: uma volta a cada 40 s, com giro pela mão, pelo teclado e pelo toque. Cada planeta tem **menos de 1 MB**.
 
 | | |
 | --- | --- |
@@ -69,7 +69,9 @@ O id é sempre `planeta-<nome>`, sem acentos. No código, `await carregarPlaneta
    - `--inicio` é o ângulo em que o planeta aparece primeiro (o mesmo do pôster).
    - `--elevacao` é a altura da câmera, em graus (padrão 12).
    - `--forma ilha` e `--rosto x,y,z` são para modelos fora do padrão.
-2. **Registrar:** `python3 ferramentas/adicionar_planeta.py "<pasta de saída>"`. Copia os arquivos, atualiza o catálogo e refaz a tabela acima, o LEIA-ME do kit e o PDF.
+2. **Registrar:** `python3 ferramentas/adicionar_planeta.py "<pasta de saída>"` (precisa de `npm install`).
+   - Comprime o planeta para **menos de 1 MB** com `ferramentas/comprimir_glb.mjs`: malha Draco, ~60% dos triângulos onde a forma não muda e cor 2K em AVIF, sem perda visível.
+   - Atualiza o catálogo e refaz a tabela acima, o LEIA-ME do kit e o PDF.
 3. **Publicar:**
    1. commit e push;
    2. deploy na Vercel, que coloca o planeta no ar para todas as plataformas;
@@ -80,11 +82,12 @@ O id é sempre `planeta-<nome>`, sem acentos. No código, `await carregarPlaneta
 | Caminho | O que é |
 | --- | --- |
 | `components/planetas/` | O componente que vai no kit: `<Planeta id>`, `PlanetaGirando` (three.js), catálogo remoto |
-| `public/planetas/` | `catalogo.json` (fonte única) e `<id>/planeta.glb` + `poster.webp` de cada planeta |
+| `public/planetas/` | `catalogo.json` (fonte única) e `<id>/planeta.glb` (< 1 MB) + `poster.webp` de cada planeta |
+| `public/draco/` | Decodificador da malha (Draco), baixado uma vez pelo navegador |
 | `vitrine/`, `app/` | A vitrine (Next.js): seletor de planeta, tamanhos e aba de código para a engenharia |
-| `ferramentas/` | Otimizador (Blender), `adicionar_planeta.py`, gerador do guia em PDF e publicação do kit |
+| `ferramentas/` | Otimizador (Blender), compressão (`comprimir_glb.mjs`), `adicionar_planeta.py`, gerador do guia em PDF e publicação do kit |
 | `GUIA-ENGENHARIA.pdf` | O guia, gerado a partir do catálogo |
-| `vercel.json` | CORS e revalidação em `/planetas/*` |
+| `vercel.json` | CORS em `/planetas/*` e `/draco/*` |
 
 ## Rodar localmente
 
@@ -101,6 +104,6 @@ Stack: Next.js 15, React 19, three 0.170 e lucide-react.
 - **Mão:** arrastar gira, com embalo ao soltar; no celular, deslizar na vertical rola a página.
 - **Teclado:** setas ← e →.
 - **"Reduzir movimento":** o planeta não gira sozinho, mas a mão continua funcionando.
-- **Carregamento:** o pôster aparece na hora e o 3D só carrega quando o planeta está na tela.
+- **Carregamento:** o pôster aparece na hora, e o 3D (menos de 1 MB) só carrega quando o planeta está na tela.
 - **Sem WebGL ou sem rede:** fica o pôster.
 - **Desempenho:** para de desenhar fora da tela e baixa a resolução sozinho em aparelho lento.
