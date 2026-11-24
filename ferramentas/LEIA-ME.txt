@@ -28,6 +28,7 @@ Planetas (id = planeta-<nome>, sem acentos):
   planeta-esportes           Esportes
   planeta-profissoes         Profissões
   planeta-robotica           Robótica
+  planeta-educacao-financeira Educação Financeira
 # planetas:fim
 
 Planeta novo: quando o Design publica, é só usar o id novo (ex.: <Planeta id="planeta-<nome>" />).
