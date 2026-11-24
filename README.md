@@ -55,23 +55,21 @@ Props, perguntas frequentes e CSP estão no [guia em PDF](https://github.com/nan
 
 O id é sempre `planeta-<nome>`, sem acentos. No código, `await carregarPlanetas()` devolve a lista com `id` e `nome`.
 
-## Para o Design: planeta novo
+## Adicionar um planeta
 
-1. **Gerar** o planeta no Tripo como **esfera**, com os elementos distribuídos em volta. Modelos achatados, como uma ilha, uma meia-esfera ou um medalhão em relevo, não ficam bons girando 360°.
-2. **Otimizar** no Blender 5.3. O script reduz de ~65 MB para ~2,5 MB, centraliza a esfera e gera o pôster:
+1. **Otimizar** o `.glb` do planeta no Blender 5.3. O script reduz de ~65 MB para ~2,5 MB, centraliza a esfera e gera o pôster:
 
    ```bash
    blender -b --factory-startup -P ferramentas/otimizar_glb.py -- \
-     --entrada "~/Downloads/PLANETAS 3D/NOVOS-PLANETAS/esportes.glb" \
-     --saida "~/Downloads/PLANETAS 3D/web/planeta-esportes" \
+     --entrada esportes.glb --saida saida/planeta-esportes \
      --id planeta-esportes --nome "Esportes" --inicio 0
    ```
 
    - `--inicio` é o ângulo em que o planeta aparece primeiro (o mesmo do pôster).
    - `--elevacao` é a altura da câmera, em graus (padrão 12).
    - `--forma ilha` e `--rosto x,y,z` são para modelos fora do padrão.
-3. **Registrar:** `python3 ferramentas/adicionar_planeta.py "<pasta de saída>"`. Copia os arquivos, atualiza o catálogo e refaz a tabela acima, o LEIA-ME do kit e o PDF.
-4. **Publicar:**
+2. **Registrar:** `python3 ferramentas/adicionar_planeta.py "<pasta de saída>"`. Copia os arquivos, atualiza o catálogo e refaz a tabela acima, o LEIA-ME do kit e o PDF.
+3. **Publicar:**
    1. commit e push;
    2. deploy na Vercel, que coloca o planeta no ar para todas as plataformas;
    3. `bash ferramentas/publicar_kit.sh`, que atualiza o .zip e o PDF da release.

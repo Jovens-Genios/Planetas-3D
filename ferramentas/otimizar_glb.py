@@ -1,12 +1,12 @@
-"""Prepara um planeta gerado em 3D (ex.: Tripo) para girar na web.
+"""Prepara o modelo 3D (.glb) de um planeta para girar na web.
 
   blender -b --factory-startup -P ferramentas/otimizar_glb.py -- \
-      --entrada "<planeta do Tripo>.glb" --saida <pasta de saída> --id planeta-<tema> --nome "<Tema>" \
+      --entrada "<planeta>.glb" --saida <pasta de saída> --id planeta-<tema> --nome "<Tema>" \
       [--tris 160000] [--textura 2048] [--qualidade 86] [--inicio 0] [--elevacao 12] [--forma ilha] [--rosto x,y,z]
   Depois: python3 ferramentas/adicionar_planeta.py <pasta de saída>
 
 O que faz, nesta ordem:
-  1. Importa o .glb e junta tudo numa malha (o Tripo já entrega uma só).
+  1. Importa o .glb e junta tudo numa malha.
   2. Mede a ESFERA do planeta (ajuste robusto por mínimos quadrados: descarta os vértices dos
      elementos que saem dela) e põe o centro dela na origem, com raio 1. Assim o planeta gira
      em volta do próprio centro, sem bambolear.
