@@ -46,3 +46,9 @@ next-env.d.ts
 .eslintcache
 .turbo
 .swc
+
+# planetas-3d
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+.env*

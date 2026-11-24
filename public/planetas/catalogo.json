@@ -1,0 +1,126 @@
+{
+  "versao": 1,
+  "planetas": [
+    {
+      "id": "planeta-mitologia",
+      "nome": "Mitologia",
+      "pasta": "planetas/planeta-mitologia",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.347,
+      "inicio": 305,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-empreendedorismo",
+      "nome": "Empreendedorismo",
+      "pasta": "planetas/planeta-empreendedorismo",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.446,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-emocoes",
+      "nome": "Emoções",
+      "pasta": "planetas/planeta-emocoes",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.397,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-artes",
+      "nome": "Artes",
+      "pasta": "planetas/planeta-artes",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.463,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-computacao",
+      "nome": "Computação",
+      "pasta": "planetas/planeta-computacao",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.322,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-fantasia",
+      "nome": "Fantasia",
+      "pasta": "planetas/planeta-fantasia",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.612,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-musica",
+      "nome": "Música",
+      "pasta": "planetas/planeta-musica",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.067,
+      "inicio": 315,
+      "elevacao": 35,
+      "fov": 30
+    },
+    {
+      "id": "planeta-terra",
+      "nome": "Terra",
+      "pasta": "planetas/planeta-terra",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.574,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    },
+    {
+      "id": "planeta-alfabetizacao",
+      "nome": "Alfabetização",
+      "pasta": "planetas/planeta-alfabetizacao",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.451,
+      "inicio": 0,
+      "elevacao": 40,
+      "fov": 30
+    },
+    {
+      "id": "planeta-transito",
+      "nome": "Trânsito",
+      "pasta": "planetas/planeta-transito",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.259,
+      "inicio": 0,
+      "elevacao": 40,
+      "fov": 30
+    },
+    {
+      "id": "planeta-esportes",
+      "nome": "Esportes",
+      "pasta": "planetas/planeta-esportes",
+      "modelo": "planeta.glb",
+      "poster": "poster.webp",
+      "raioQuadro": 1.368,
+      "inicio": 0,
+      "elevacao": 12,
+      "fov": 30
+    }
+  ]
+}

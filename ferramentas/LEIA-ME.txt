@@ -1,0 +1,37 @@
+PLANETAS 3D · EXPLORADORES (Jovens Gênios)
+==========================================
+
+Instalação (uma vez só):
+
+  1. Descompacte este .zip na raiz do projeto Next.js. Ele cria components/planetas/.
+     O projeto usa src/? Mova para src/components/planetas.
+  2. npm i three
+     npm i -D @types/three
+  3. import { Planeta } from '@/components/planetas'
+     <Planeta id="planeta-emocoes" tamanho={240} alt="Planeta Emoções" />
+
+Os modelos 3D e os pôsteres não vêm no .zip: o componente busca tudo na web, pelo id,
+em https://planetas-3d.vercel.app.
+
+Planetas (id = planeta-<nome>, sem acentos):
+# planetas:inicio (lista gerada por ferramentas/adicionar_planeta.py)
+  planeta-mitologia          Mitologia
+  planeta-empreendedorismo   Empreendedorismo
+  planeta-emocoes            Emoções
+  planeta-artes              Artes
+  planeta-computacao         Computação
+  planeta-fantasia           Fantasia
+  planeta-musica             Música
+  planeta-terra              Terra
+  planeta-alfabetizacao      Alfabetização
+  planeta-transito           Trânsito
+  planeta-esportes           Esportes
+# planetas:fim
+
+Planeta novo: quando o Design publica, é só usar o id novo (ex.: <Planeta id="planeta-<nome>" />).
+Não é preciso baixar nada de novo.
+
+Ver funcionando:  https://planetas-3d.vercel.app
+Catálogo ao vivo: https://planetas-3d.vercel.app/planetas/catalogo.json
+Guia:             https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf
+Repositório:      https://github.com/nandopandp-cloud/Planetas-3D
