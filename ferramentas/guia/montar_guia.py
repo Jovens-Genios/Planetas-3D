@@ -16,7 +16,7 @@ from PIL import Image
 AQUI = Path(__file__).parent
 RAIZ = AQUI.parents[1]
 PUB = RAIZ / 'public' / 'planetas'
-REL = 'https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/'
+REL = 'https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/'
 CAPA = 'planeta-emocoes'
 
 
@@ -43,7 +43,7 @@ for k, v in {
     '{{CAPA}}': b64(PUB / CAPA / 'poster.webp', 1000),
     '{{PLANETAS}}': grade, '{{COLUNAS}}': str(colunas), '{{IMG}}': str(img), '{{FONTE_ID}}': str(fonte_id),
     '{{ZIP}}': REL + 'kit-planetas.zip', '{{PDF}}': REL + 'GUIA-ENGENHARIA.pdf',
-    '{{ZIP_CURTO}}': 'github.com/nandopandp-cloud/Planetas-3D › releases › kit-planetas.zip',
+    '{{ZIP_CURTO}}': 'github.com/Jovens-Genios/Planetas-3D › releases › kit-planetas.zip',
 }.items():
     s = s.replace(k, v)
 assert '{{' not in s

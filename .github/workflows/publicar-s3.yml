@@ -1,0 +1,45 @@
+# Envia os planetas para a S3 a cada push na main que mexa neles (planeta novo ou atualizado).
+# Fica desligado até a engenharia configurar, em Settings → Secrets and variables → Actions:
+#   Variables: S3_BUCKET (obrigatório), AWS_REGION (obrigatório), S3_PREFIXO, CLOUDFRONT_ID,
+#              PLANETAS_URL (endereço público, para conferir no fim), AWS_ROLE_ARN (acesso por OIDC, recomendado)
+#   Secrets:   AWS_ACCESS_KEY_ID e AWS_SECRET_ACCESS_KEY (só se não usar AWS_ROLE_ARN)
+name: Publicar planetas na S3
+
+on:
+  push:
+    branches: [main]
+    paths: ['public/planetas/**', 'public/draco/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publicar-s3
+  cancel-in-progress: false
+
+jobs:
+  s3:
+    if: vars.S3_BUCKET != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ vars.AWS_REGION }}
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Enviar planetas
+        run: bash ferramentas/s3/publicar_s3.sh
+        env:
+          BUCKET: ${{ vars.S3_BUCKET }}
+          PREFIXO: ${{ vars.S3_PREFIXO }}
+          CLOUDFRONT_ID: ${{ vars.CLOUDFRONT_ID }}
+
+      - name: Conferir o endereço público
+        if: vars.PLANETAS_URL != ''
+        run: node ferramentas/s3/verificar.mjs "${{ vars.PLANETAS_URL }}"

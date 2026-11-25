@@ -5,8 +5,12 @@ import type { PlanetaDados } from './PlanetaGirando'
    O catálogo (<endereço>planetas/catalogo.json) e os arquivos de cada planeta
    (<endereço>planetas/<id>/planeta.glb e poster.webp) são lidos daqui.
    Planeta novo publicado pelo Design já funciona pelo id, sem mudar nada no projeto.
+
+   Produção (S3/CDN da Jovens Gênios): defina no projeto, sem editar este arquivo,
+     NEXT_PUBLIC_PLANETAS_URL=https://<cdn>/<pasta>/
+   (a raiz onde ficam planetas/ e draco/). Sem a variável, usa o site dos planetas.
    ===================================================================== */
-export const ENDERECO_PLANETAS = 'https://planetas-3d.vercel.app/'
+export const ENDERECO_PLANETAS = process.env.NEXT_PUBLIC_PLANETAS_URL || 'https://planetas-3d.vercel.app/'
 
 export type InfoPlaneta = PlanetaDados & { nome: string }
 

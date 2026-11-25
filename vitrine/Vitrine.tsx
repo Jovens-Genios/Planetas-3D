@@ -270,8 +270,8 @@ export function PlanetaDaTrilha() {
   )
 }`
 
-const KIT = 'https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/kit-planetas.zip'
-const GUIA = 'https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf'
+const KIT = 'https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/kit-planetas.zip'
+const GUIA = 'https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf'
 
 const PROPS: [string, string, string][] = [
   ['id', '—', "planeta do catálogo ('planeta-mitologia', 'planeta-emocoes', …)"],
@@ -283,7 +283,7 @@ const PROPS: [string, string, string][] = [
   ['arrastavel', 'true', 'girar com a mão e com as setas'],
   ['inicio', '0', 'graus somados ao ângulo inicial do modelo (0 = igual ao pôster)'],
   ['luz · flutuar · sombra', 'true', 'liga e desliga cada camada'],
-  ['halo', "'92, 196, 255'", 'cor do brilho (r, g, b) ou false'],
+  ['halo', 'false', "brilho atrás do planeta: cor (r, g, b), ex. '92, 196, 255'"],
 ]
 
 function Handoff() {

@@ -10,8 +10,13 @@ Instalação (uma vez só):
   3. import { Planeta } from '@/components/planetas'
      <Planeta id="planeta-emocoes" tamanho={240} alt="Planeta Emoções" />
 
+O componente desenha só o planeta girando, com fundo transparente.
 Os modelos 3D e os pôsteres não vêm no .zip: o componente busca tudo na web, pelo id,
-em https://planetas-3d.vercel.app.
+em https://planetas-3d.vercel.app (testes).
+
+Produção: com os planetas na S3 da Jovens Gênios, defina no projeto
+  NEXT_PUBLIC_PLANETAS_URL=https://<cdn>/<pasta>/
+Passo a passo da S3: README do repositório (seção "Produção na S3") e páginas 6 e 7 do guia.
 
 Planetas (id = planeta-<nome>, sem acentos):
 # planetas:inicio (lista gerada por ferramentas/adicionar_planeta.py)
@@ -36,5 +41,5 @@ Não é preciso baixar nada de novo.
 
 Ver funcionando:  https://planetas-3d.vercel.app
 Catálogo ao vivo: https://planetas-3d.vercel.app/planetas/catalogo.json
-Guia:             https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf
-Repositório:      https://github.com/nandopandp-cloud/Planetas-3D
+Guia:             https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf
+Repositório:      https://github.com/Jovens-Genios/Planetas-3D

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Empacota o kit de instalação (só o componente: os planetas são lidos da web) e publica, junto com o
 # guia em PDF, na release fixa "kit-planetas" deste repositório. Os links nunca mudam:
-#   https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/kit-planetas.zip
-#   https://github.com/nandopandp-cloud/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf
+#   https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/kit-planetas.zip
+#   https://github.com/Jovens-Genios/Planetas-3D/releases/download/kit-planetas/GUIA-ENGENHARIA.pdf
 # Rodar depois do push, sempre que o componente, o LEIA-ME ou o guia mudarem (planeta novo muda o guia).
 set -euo pipefail
 raiz="$(git rev-parse --show-toplevel)"
-repo="nandopandp-cloud/Planetas-3D"
+repo="Jovens-Genios/Planetas-3D"
 tmp="$(mktemp -d)"
 mkdir -p "$tmp/components"
 cp -R "$raiz/components/planetas" "$tmp/components/"
