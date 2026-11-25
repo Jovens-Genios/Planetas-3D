@@ -14,7 +14,8 @@ O componente desenha só o planeta girando, com fundo transparente.
 Os modelos 3D e os pôsteres não vêm no .zip: o componente busca tudo na web, pelo id,
 em https://planetas-3d.vercel.app (testes).
 
-Produção: com os planetas na S3 da Jovens Gênios, defina no projeto
+Funciona assim, sem configurar nada. Opcional (recomendado para produção com alunos):
+com os planetas na S3 da Jovens Gênios, defina no projeto
   NEXT_PUBLIC_PLANETAS_URL=https://<cdn>/<pasta>/
 Passo a passo da S3: README do repositório (seção "Produção na S3") e páginas 6 e 7 do guia.
 

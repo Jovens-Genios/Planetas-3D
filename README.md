@@ -38,7 +38,13 @@ import { Planeta } from '@/components/planetas'
 
 ## Produção na S3
 
-O site da Vercel serve para testes. Em produção, os arquivos ficam na S3 da Jovens Gênios, com uma CDN na frente. A configuração é feita uma vez; o componente e o uso pelo id não mudam.
+> **A S3 é opcional.** Sem configurar nada, o kit funciona como está, lendo os planetas de `https://planetas-3d.vercel.app`, com os mesmos ids. Planeta novo continua sendo só o id novo.
+>
+> Esse endereço está numa conta pessoal da Vercel, no plano gratuito (uso não comercial, com limite mensal de tráfego): serve bem para testes e piloto. Para produção com alunos, recomendamos uma destas opções:
+> - copiar os arquivos para a S3 da Jovens Gênios (passos abaixo);
+> - transferir o projeto `planetas-3d` da Vercel para uma conta paga da JG, mantendo o mesmo endereço, sem mudar nada no código.
+
+Para usar a S3, a configuração é feita uma vez; o componente e o uso pelo id não mudam.
 
 1. **Bucket e CDN:** bucket privado com CloudFront (acesso por OAC), política de cache **CachingOptimized** e de cabeçalhos de resposta **SimpleCORS**. Servindo direto da S3, aplique [`ferramentas/s3/cors.json`](ferramentas/s3/cors.json):
    ```bash

@@ -60,6 +60,13 @@
   .vars code { font-size: 8pt; background: #f1edf8; color: var(--roxo2); padding: .3mm 1.4mm; border-radius: 1mm; font-weight: 600; }
   .s3 table { margin: 2mm 0 7mm; }
   .s3 td code { font-size: 8.2pt; }
+  .opcional { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 6mm; }
+  .opcional > div { border-radius: 4mm; padding: 4mm 5mm; }
+  .opcional .ja { background: var(--teal-claro); border: 1.5px solid #9fe5df; }
+  .opcional .prod { background: var(--fundo); border: 1.5px solid var(--linha); }
+  .opcional b { display: block; font-size: 10.5pt; color: var(--tinta); margin-bottom: 1mm; }
+  .opcional .ja b { color: #0b4f4b; }
+  .opcional p { font-size: 8.9pt; line-height: 1.45; margin: 0; }
   .checklist { list-style: none; margin: 1mm 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 6mm; }
   .checklist li { font-size: 9.2pt; line-height: 1.45; padding-left: 6.5mm; position: relative; }
   .checklist li::before { content: ''; position: absolute; left: 0; top: .9mm; width: 3.6mm; height: 3.6mm; border: 1.5px solid var(--teal); border-radius: 1mm; }
@@ -190,14 +197,14 @@ planetas.map((p) =&gt; &lt;Planeta key={p.id}
   <p class="lead">O Design cria e publica o planeta na web. A engenharia não baixa nada nem atualiza o kit: o componente encontra o planeta novo pelo id.</p>
   <div class="fluxo">
     <div class="etapa"><span class="quem">Design</span><b>Cria e prepara</b><p>Gera o planeta, reduz para menos de 1 MB, gera o pôster e põe no catálogo.</p></div>
-    <div class="etapa"><span class="quem">Design</span><b>Publica</b><p>Envia para o repositório; o envio automático sobe o planeta para a S3 (página 6). Avisa o id novo.</p></div>
+    <div class="etapa"><span class="quem">Design</span><b>Publica</b><p>Põe o planeta no ar (e na S3, se a engenharia usar, automaticamente) e avisa o id novo.</p></div>
     <div class="etapa"><span class="quem">Engenharia</span><b>Usa o id</b><p><code>&lt;Planeta id="planeta-&lt;nome&gt;" /&gt;</code>, e pronto.</p></div>
   </div>
   <h3 style="margin-top:8mm">Perguntas frequentes</h3>
   <div class="faq">
     <div><b>Usamos a pasta src/</b><p>Mova para <code>src/components/planetas</code>. Se o alias apontar para <code>src/</code>, o import <code>@/components/planetas</code> não muda.</p></div>
     <div><b>Id que não existe</b><p>Fica só o espaço do planeta, e o console avisa com a lista dos ids publicados.</p></div>
-    <div><b>Onde os arquivos ficam</b><p>Hoje em <code>planetas-3d.vercel.app</code>, para testes. Em produção, na S3 da Jovens Gênios, com a variável <code>NEXT_PUBLIC_PLANETAS_URL</code> (página 6).</p></div>
+    <div><b>Onde os arquivos ficam</b><p>Em <code>planetas-3d.vercel.app</code>, e o kit funciona assim, sem configurar nada. Usar a S3 da JG é opcional e recomendado para produção (página 6).</p></div>
     <div><b>Política de segurança (CSP)</b><p>Libere o endereço dos planetas (a CDN) em <code>img-src</code> e <code>connect-src</code>, e inclua <code>'wasm-unsafe-eval'</code> em <code>script-src</code> (a malha usa WebAssembly).</p></div>
     <div><b>Muitos planetas na mesma tela</b><p>Cada planeta 3D usa um contexto WebGL, e os navegadores aceitam ~16. Em listas longas, mostre o pôster como imagem e use o 3D só no destaque.</p></div>
     <div><b>SSR</b><p>O servidor entrega o pôster em HTML comum, e o navegador troca pelo 3D. Não há layout shift: o tamanho é fixo pela prop.</p></div>
@@ -209,17 +216,11 @@ planetas.map((p) =&gt; &lt;Planeta key={p.id}
 <!-- 6 · produção na S3: configurar -->
 <section class="pagina s3">
   <div class="cabeca"><span class="marca">Planetas 3D</span><span>Produção na S3</span></div>
-  <p class="sobre">Produção na S3 · configurar (uma vez)</p>
+  <p class="sobre">Produção na S3 · opcional</p>
   <h2>Os planetas na S3 da Jovens Gênios</h2>
-  <p class="lead">O site dos planetas serve para testes. Para produção, a engenharia copia os arquivos para a S3, com uma CDN na frente, e aponta os projetos para lá. O componente e o uso pelo id não mudam.</p>
-
-  <div class="arvore">
-    <pre>https://&lt;cdn&gt;/&lt;pasta&gt;/        <i>← NEXT_PUBLIC_PLANETAS_URL</i>
-├─ planetas/catalogo.json
-├─ planetas/&lt;id&gt;/planeta.glb
-├─ planetas/&lt;id&gt;/poster.webp
-└─ draco/  <i>(decodificador da malha)</i></pre>
-    <p><b>A mesma estrutura de <code>public/</code> do repositório</b>, numa pasta à escolha (ex.: <code>exploradores</code>). Cerca de 15 MB no total, menos de 1 MB por planeta.</p>
+  <div class="opcional">
+    <div class="ja"><b>✓ Sem a S3, já funciona</b><p>Sem configurar nada, o kit usa os planetas publicados em <code>planetas-3d.vercel.app</code>, do mesmo jeito e com os mesmos ids. Planeta novo continua sendo só o id novo. Esse endereço está numa conta pessoal da Vercel, no plano gratuito: bom para testes e piloto.</p></div>
+    <div class="prod"><b>Para produção com alunos</b><p>Recomendado: copiar os arquivos para a S3 da Jovens Gênios (passos abaixo) <strong>ou</strong> transferir o projeto <code>planetas-3d</code> da Vercel para uma conta paga da JG, mantendo o mesmo endereço. Nos dois casos, o componente e o uso pelo id não mudam.</p></div>
   </div>
 
   <div class="passo"><div class="bola">1</div><div>
@@ -231,7 +232,7 @@ planetas.map((p) =&gt; &lt;Planeta key={p.id}
 
   <div class="passo"><div class="bola">2</div><div>
     <h3>Primeira carga</h3>
-    <p>Com o AWS CLI configurado. O script já grava o tipo e o cache certos de cada arquivo (tabela na página 7) e envia o catálogo por último. <code>SECO=1</code> só mostra o que faria.</p>
+    <p>Com o AWS CLI configurado. Copia <code>public/planetas</code> e <code>public/draco</code> para <code>&lt;bucket&gt;/&lt;pasta&gt;/</code> (~15 MB), com o tipo e o cache certos de cada arquivo (tabela na página 7), e envia o catálogo por último. <code>SECO=1</code> só mostra o que faria.</p>
     <pre class="codigo">git clone https://github.com/Jovens-Genios/Planetas-3D &amp;&amp; cd Planetas-3D
 BUCKET=<span class="s">&lt;bucket&gt;</span> PREFIXO=<span class="s">exploradores</span> CLOUDFRONT_ID=<span class="s">&lt;id&gt;</span> \
   bash ferramentas/s3/publicar_s3.sh</pre>
